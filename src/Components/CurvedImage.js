@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import probe from "probe-image-size";
+import base64Img from 'base64-img';
 
 const CurvedImage = ({ student }) => {
     console.log(student);
@@ -8,13 +9,13 @@ const CurvedImage = ({ student }) => {
     let [size, setSize] = useState(student.size)
     let col = 18;
 
-    let imageSrc = student.imageSrc;
-    useEffect(() => {
-        probe(student.imageSrc).then((res) => {
-            console.log(res);
-            setSize(res);
-        })
-    }, [])
+    let imageSrc = student.base64Img;
+    // useEffect(() => {
+    //     probe(student.imageSrc).then((res) => {
+    //         console.log(res);
+    //         setSize(res);
+    //     })
+    // }, [])
 
 
     let radius = 7 + Math.random();

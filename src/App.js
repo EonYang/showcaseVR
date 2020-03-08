@@ -2,21 +2,22 @@ import React, { useState, useEffect } from 'react';
 import 'aframe/dist/aframe-master';
 import CurvedImage from './Components/CurvedImage';
 import dataRaw from './data.json';
+import dataWithBase64 from './data_base64.json';
 
 function App() {
 
   let first5 = [];
   for (let i = 0; i < 5; i++) {
-    first5.push(dataRaw[i]);
+    first5.push(dataWithBase64[i]);
   }
 
-  let [data, setData] = useState(dataRaw)
+  let [data, setData] = useState(dataWithBase64)
 
   data.map((student, key) => {
     student.i = key;
     console.log(student);
     student.imageSrc = student.thumbnail_image !== null && student.thumbnail_image.src !== null ? student.thumbnail_image.src : student.slide_show[0].src;
-    student.size = { width: 320, height: 200 };
+    // student.size = { width: 320, height: 200 };
   })
 
   return (
