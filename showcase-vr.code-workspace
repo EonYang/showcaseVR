@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "/Users/YANG/dev/dev/learning/showcase-vr"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.js":"javascriptreact"
+		}
+	}
+}
