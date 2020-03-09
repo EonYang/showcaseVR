@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import ReactPlayer from 'react-player';
+import parse from 'html-react-parser';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import 'jquery/dist/jquery.js';
@@ -55,13 +56,21 @@ const DetailPage = ({ data, myEmitter }) => {
 
 
                 <div id="scroll-view" className="w-100 h-100">
-                    <div id="scroll-body"className="container-fluid px-4 py-4">
+                    <div id="scroll-body" className="container-fluid px-4 py-4">
                         <h1>{student.title ? student.title : "No Title"}</h1>
                         <h3>{student.student_name}</h3>
-                        <p>{student.abstract}</p>
-                        <p>{student.thesis_statement}</p>
+                        <p>{parse(student.abstract)}</p>
+                        {student.slide_show.map((slide) => {
+                            if (slide.src) {
+                                return (
+                                    <img src={slide.src}></img>
+                                )
+                            }
+                        })}
+                        <p>{parse(student.thesis_statement)}</p>
+                        <p>{parse(student.context_research)}</p>
                         {video2}
-                        <p>{student.context_research}</p>
+                        <p>{parse(student.context_research)}</p>
                         {video1}
                     </div>
 
