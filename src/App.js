@@ -50,7 +50,7 @@ function App() {
         <a-image position="0 -4 0" material="src: url(radial-shadow-2.png)" rotation="-90 0 0" scale="6 6 6"></a-image>
         <a-entity position="0 1 0">
           <a-camera look-controls-enabled="false"
-            custom-look-controls="enabled : true; speedRateForPhone : 0.3 ; reverseMouseDrag: true; reverseTouchDrag: false "
+            custom-look-controls="enabled : true; speedRateForPhone : 0.3 ; reverseMouseDrag: false; reverseTouchDrag: false "
             wasd-controls="fly:  true" cursor="rayOrigin: mouse">
             <a-entity light="angle: 0; decay: 1.5; distance: 10; type: point"></a-entity>
           </a-camera>

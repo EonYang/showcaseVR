@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "486e64a3871d33fd047062f646e898f9",
+    "revision": "036bbed32b0838ed2874ab6f65a181cc",
     "url": "/showcaseVR/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/showcaseVR/static/css/2.89f067aa.chunk.css"
   },
   {
-    "revision": "ed75e8e87bce40f88e66",
+    "revision": "679a5b6c22d78ef6d53c",
     "url": "/showcaseVR/static/css/main.e5bb7cec.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/showcaseVR/static/js/2.086302d6.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ed75e8e87bce40f88e66",
-    "url": "/showcaseVR/static/js/main.9472280f.chunk.js"
+    "revision": "679a5b6c22d78ef6d53c",
+    "url": "/showcaseVR/static/js/main.9e0a4c4a.chunk.js"
   },
   {
     "revision": "523c7dcf5ac8ffb890de",

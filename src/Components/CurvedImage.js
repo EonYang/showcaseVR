@@ -41,7 +41,7 @@ const CurvedImage = ({ student }) => {
                 animation__mouseleave={`property: position; to:0 0 0;  dur:200; startEvents:mouseleave`}
                 animation__enter={`property: scale; to:1.2 1.2 1; dur:300; startEvents:mouseenter `}
                 animation__leave={`property: scale; to:1 1 1;  dur:200; startEvents:mouseleave`}
-                show-detail={`event: mouseup; studentid: ${student.i}`}
+                show-detail={`event: click; studentid: ${student.i}`}
                 proxy-event__enter={`event: mouseenter; to: #${id}text`}
                 proxy-event__leave={`event: mouseleave; to: #${id}text`}>
                 <a-entity rotation={`0 180 0`} position={`0 ${- 0.6 * height} ${radius - 0.2}`}  >
