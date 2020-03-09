@@ -63,7 +63,7 @@ const DetailPage = ({ data, myEmitter }) => {
                         {student.slide_show.map((slide) => {
                             if (slide.src) {
                                 return (
-                                    <img src={slide.src}></img>
+                                    <img className="mw-100" src={slide.src}></img>
                                 )
                             }
                         })}
