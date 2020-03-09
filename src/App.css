@@ -1,0 +1,27 @@
+#detail-page {
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    z-index: 999;
+    background-color: white;
+}
+
+#scroll-view{
+    overflow-y: scroll;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    /* width: 90%;
+    height: 90%; */
+}
+
+#close-button {
+    cursor: pointer;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    width: 44px;
+    height: 44px;
+}

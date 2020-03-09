@@ -5,7 +5,7 @@ var sizeOf = require('image-size');
 let base64Img = require('base64-img');
 const fetch = require('node-fetch');
 var request = require('request').defaults({ encoding: null });
-var probe = require( "probe-image-size");
+var probe = require("probe-image-size");
 
 function App() {
 
@@ -43,9 +43,6 @@ function App() {
 
         console.log("JSON file has been saved.");
     });
-
-
-
 }
 
 // let rawdata = fs.readFileSync(path.resolve(__dirname, "./src/data.json"));
@@ -61,10 +58,10 @@ async function toBase64() {
             let student = data[i];
             let imageSrc = student.thumbnail_image !== null && student.thumbnail_image.src !== null ? student.thumbnail_image.src : student.slide_show[0].src;
             data[i].imageSrc = imageSrc;
-            let r =  await returnBase64(imageSrc);
+            let r = await returnBase64(imageSrc);
             data[i].base64Img = r.base64Img;
             data[i].size = r.size;
-            
+
             // console.log(data[i].base64Img);
             console.log(i)
         }
@@ -89,7 +86,7 @@ async function returnBase64(imageSrc) {
                     r.size = res;
                     resolve(r)
                 })
-                
+
             }
         });
     })
@@ -100,10 +97,8 @@ async function returnBase64(imageSrc) {
 
 async function caller() {
     let d = await toBase64();
-    console.log(d[d.length-1].size);
-    var jsonContent = JSON.stringify(d);
-    // console.log(jsonContent);
-
+    console.log(d[d.length - 1].size);
+    let jsonContent = JSON.stringify(d);
     fs.writeFile("data_base64.json", jsonContent, 'utf8', function (err) {
         if (err) {
             console.log("An error occured while writing JSON Object to File.");
@@ -114,6 +109,48 @@ async function caller() {
     });
 }
 
+function downloadImages() {
+    let rawdata = fs.readFileSync(path.resolve(__dirname, "./src/data_base64.json"));
+    let data = JSON.parse(rawdata);
+    data.map((student, i) => {
+        let imageSrc = student.thumbnail_image !== null && student.thumbnail_image.src !== null ? student.thumbnail_image.src : student.slide_show[0].src;
+        data[i].imageSrc = imageSrc;
+        let ext = imageSrc.match(/\.[0-9a-z]+$/i)[0];
+        let thumbnailName = `id${i}${student.student_slug.replace(/([^A-Za-z])/g, '')}${ext}`;
+        let folderName = "thesis2019/";
+        console.log(thumbnailName);
+        // download(encodeURI(imageSrc), folderName+thumbnailName, ()=>{
+        //     console.log(i);            
+        // })
+        ext = ".jpg";
+        thumbnailName = `id${i}${student.student_slug.replace(/([^A-Za-z])/g, '')}${ext}`;
+        data[i].thumbnailName = thumbnailName;
+        console.log(data[i].thumbnailName);
+        delete data[i].base64Img;
+    })
+    let jsonContent = JSON.stringify(data);
+    fs.writeFile("data_with_file_path.json", jsonContent, 'utf8', function (err) {
+        if (err) {
+            console.log("An error occured while writing JSON Object to File.");
+            return console.log(err);
+        }
 
-caller()
+        console.log("JSON file has been saved.");
+    });
+
+
+}
+
+var download = function (uri, filename, callback) {
+    request.head(uri, function (err, res, body) {
+        console.log('content-type:', res.headers['content-type']);
+        console.log('content-length:', res.headers['content-length']);
+
+        request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+    });
+};
+
+
+
+downloadImages()
 
