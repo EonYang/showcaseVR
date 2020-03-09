@@ -29,14 +29,16 @@ const CurvedImage = ({ student }) => {
     let thetaLength = 340 / col + Math.random() * 2 * (size.width / size.height) - 6;
     let height = 0.11 * (size.height / size.width) * thetaLength;
     // let scale = `${Math.random() / 5 + 0.9} ${Math.random() / 5 + 0.9} ${Math.random() / 5 + 0.9}`;
-    let rot = `${20 * (Math.floor(student.i / col) - 2.5)} ${(120 + student.i * (365 / col))%360} 0`;
+    let rot = `${20 * (Math.floor(student.i / col) - 2.5)} ${(120 + student.i * (365 / col)) % 360} 0`;
     let pos = `0 ${posY} 0`;
 
     return (
-        <> <a-entity rotation="0 180 0" position="0 2 0"
-            animation={`property: position; to: ${pos}; dur: 3000; delay: ${student.i*30} easing: easeInOutSine`} 
-            animation={`property: rotation; to: ${rot}; dur: 3000; delay: ${student.i*30} easing: easeInOutSine`}>
-            <a-curvedimage id={id} radius={`${radius}`} theta-length={thetaLength} theta-start={-thetaLength / 2} height={height} material={`shader: standard; src:url(${imageSrc})`}
+        <> <a-entity rotation="0 180 0" position="0 2 0" 
+            animation={`property: position; to: ${pos}; dur: 2000; delay: ${student.i * 50}; easing: easeInOutSine `}
+            animation={`property: rotation; to: ${rot}; dur: 3000; delay: ${student.i * 50}; easing:easeInOutSine`}
+            >
+            <a-curvedimage opacity='0' id={id} radius={`${radius}`} theta-length={thetaLength} theta-start={-thetaLength / 2} height={height} material={`shader: standard; src:url(${imageSrc})`}
+                animation={`property: opacity; to: 1; dur: 2000; delay: ${student.i * 50}; easing:easeInOutExpo`}
                 animation__mouseenter={`property: position; to:0 0 -0.5; dur:300; startEvents:mouseenter `}
                 animation__mouseleave={`property: position; to:0 0 0;  dur:200; startEvents:mouseleave`}
                 animation__enter={`property: scale; to:1.2 1.2 1; dur:300; startEvents:mouseenter `}
