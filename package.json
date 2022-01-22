@@ -18,7 +18,7 @@
     "html-react-parser": "^0.10.1",
     "image-size": "^0.8.3",
     "jquery": "^3.4.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^3.1.1",
     "popper": "^1.0.1",
     "popper.js": "^1.16.1",
     "probe-image-size": "^5.0.0",
